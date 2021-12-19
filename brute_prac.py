@@ -1,25 +1,26 @@
-import sys
-
-INT_MAX = sys.maxsize
 
 row, col = tuple(map(int, input().split()))
-cnt = 0
-min_num = INT_MAX
 
-lst = [list(input().split()) for _ in range(row)]
+lst = [ list(input()) for _ in range(row)]
+re_lst =[]
 
-def in_range(x, y):
-    return (x+7) < row and (y+7)< col
+for i in range(row - 7):
+    for j in range(col - 7):
+        f_B = 0
+        f_W = 0
+        for a in range(i, i+8):
+            for b in range(j, j+8):
+                if (a+b) %2 == 0:    
+                    if lst[a][b] != "W":
+                        f_W += 1
+                    if lst[a][b] != "B":
+                        f_B += 1
+                else:
+                    if lst[a][b] != "B":
+                        f_W += 1
+                    if lst[a][b] != "W":
+                        f_B += 1    
+        re_lst.append(f_W)
+        re_lst.append(f_B)                    
 
-for x in range(row):
-    for y in range(col):
-        if in_range(x,y):
-            if not (lst[x][y] == "B" and lst[x][y+1] == "W" and lst[x+1][y] == "W"):
-                cnt += 1
-            elif not (lst[x][y] == "W" and lst[x][y+1] == "B" and lst[x+1][y] == "B"):
-                cnt += 1
-        if not in_range(x, y):
-            break
-    ans = min(min_num, cnt)    
-
-print(ans)
+print(min(re_lst))
