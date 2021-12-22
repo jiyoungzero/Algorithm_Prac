@@ -1,8 +1,14 @@
 n = int(input())
-lst = [list(map(int, input().split())) for _ in range(n)]
-m_lst = []
-j = 0 
-value = 0
+t = []
+p = []
+dp = []
+
+for _ in range(n):
+    a, b = map(int, input().split())
+    t.append(a)
+    p.append(b)
+    dp.append(b)
+
 for a in range(n):
     for b in range(a,n):
         if j+lst[j][0]-1 <= (n-1):
