@@ -4,24 +4,17 @@ p = []
 dp = []
 
 for _ in range(n):
-    a, b = map(int, input().split())
+    a, b = tuple(map(int, input().split()))
     t.append(a)
     p.append(b)
     dp.append(b)
+dp.append(0)
+for i in range(n-1, -1, -1):
+    if t[i]+i >= n:
+        dp[i] = dp[i+1]
+    else:
+        dp[i] = max(dp[i+1], p[i]+dp[i+t[i]])
 
-for a in range(n):
-    for b in range(a,n):
-        if j+lst[j][0]-1 <= (n-1):
-            value += lst[j][1]
-            if lst[j][0] == 1:
-                j += 1
-            else:
-                j += lst[j][0]-1 
-        else:
-            break
-        m_lst.append(value)
-    j =0
-    value = 0
-print(max(m_lst))
+print(dp[0])
 
         
