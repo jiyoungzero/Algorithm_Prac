@@ -9,8 +9,9 @@ for _ in range(n):
     p.append(b)
     dp.append(b)
 dp.append(0)
+
 for i in range(n-1, -1, -1):
-    if t[i]+i >= n:
+    if t[i]+i > n:
         dp[i] = dp[i+1]
     else:
         dp[i] = max(dp[i+1], p[i]+dp[i+t[i]])
