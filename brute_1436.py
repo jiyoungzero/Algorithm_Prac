@@ -7,8 +7,8 @@ while True:
         cnt+=1
     if cnt == n:
         print(six)
+
         break
     six += 1
 
-    
     
