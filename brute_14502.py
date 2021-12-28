@@ -5,4 +5,5 @@ maze = [list(map(int, input().split())) for _ in range(row)]
 
 for i in range(row):
     for j in range(col):
-        if 
+        if maze[i][j] == '0':
+            
