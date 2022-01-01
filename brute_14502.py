@@ -1,3 +1,5 @@
+import copy
+
 row, col = tuple(map(int, input().split()))
 max_area = 0
 dxs = [0, 0, 1, -1]
@@ -8,10 +10,16 @@ cnt = 0
 def wall(w_cnt):
     if w_cnt == 3:
         dfs()
+        return
     else:
-        w_cnt+=1
-        wall(w_cnt)
-        dfs()
+        for i in range(row):
+            for j in range(col):
+                if maze[i][j] == 0:
+                    maze[i][j] = 1
+                    w_cnt+=1
+                    wall(w_cnt)
+                # 왜 maze[i][j] = 0로 하지
+
         
 def in_range(x, y): 
     return 0 <= x and x < col and 0 <= y and y < row
