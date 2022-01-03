@@ -33,8 +33,8 @@
 #                     maze[x][y] == 2
 
 s = []
-dx = [0, 0, -1, 1]
-dy = [-1, 1, 0, 0]
+dxs = [0, 0, -1, 1]
+dys = [-1, 1, 0, 0]
 max_result = 0
 def bfs():
     global max_result
@@ -52,8 +52,8 @@ def bfs():
         a, b = arr[0][0], arr[0][1]
         del arr[0]
         for i in range(4):
-            ax = a + dx[i]
-            ay = b + dy[i]
+            ax = a + dxs[i]
+            ay = b + dys[i]
             if 0 <= ax and 0 <= ay and ax < n and ay < m:
                 if copy[ax][ay] == 0:
                     copy[ax][ay] = 2
@@ -63,6 +63,7 @@ def bfs():
             if j == 0:
                 result += 1
     max_result = max(max_result, result)
+
 def wall(cnt):
     if cnt == 3:
         bfs()
