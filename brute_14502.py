@@ -47,8 +47,8 @@ def bfs():
     for i in range(n):
         for j in range(m):
             if copy[i][j] == 2:
-                arr.append([i, j])
-    while arr:
+                arr.append([i, j]) # 만약 맵 복사본에서 바이러스가 나오면 그 위치[i,j] arr에 저장
+    while arr: # 배열의 수만큼 돌리나?????????
         a, b = arr[0][0], arr[0][1]
         del arr[0]
         for i in range(4):
