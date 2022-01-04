@@ -38,12 +38,12 @@ dys = [-1, 1, 0, 0] # y축은 열
 max_result = 0
 def bfs():
     global max_result
-    copy = [[0] * m for i in range(n)]
+    copy = [[0] * m for i in range(n)] # 맵 복사본
     for i in range(n):
         for j in range(m):
-            copy[i][j] = s[i][j]
+            copy[i][j] = s[i][j] # 맵 복사
     result = 0
-    arr = []
+    arr = [] # 바이러스 개수 배열
     for i in range(n):
         for j in range(m):
             if copy[i][j] == 2:
@@ -76,6 +76,6 @@ def wall(cnt):
                 s[i][j] = 0 # 하나의 케이스가 끝이 나면 다시 빈공간으로 돌려놓기
 n, m = map(int, input().split())
 for i in range(n):
-    s.append(list(map(int, input().split())))
+    s.append(list(map(int, input().split()))) 
 wall(0)
 print(max_result)
