@@ -33,8 +33,8 @@
 #                     maze[x][y] == 2
 
 s = []
-dxs = [0, 0, -1, 1]
-dys = [-1, 1, 0, 0]
+dxs = [0, 0, -1, 1] # x축은 행
+dys = [-1, 1, 0, 0] # y축은 열
 max_result = 0
 def bfs():
     global max_result
@@ -65,15 +65,15 @@ def bfs():
     max_result = max(max_result, result)
 
 def wall(cnt):
-    if cnt == 3:
+    if cnt == 3: # 벽을 3개 이미 세웠다면 dfs 함수로 넘어가고
         bfs()
         return
     for i in range(n):
-        for j in range(m):
+        for j in range(m): # 모든 칸을 돌면서 벽을 설치해 본다.
             if s[i][j] == 0:
                 s[i][j] = 1
                 wall(cnt + 1)
-                s[i][j] = 0
+                s[i][j] = 0 # 하나의 케이스가 끝이 나면 다시 빈공간으로 돌려놓기
 n, m = map(int, input().split())
 for i in range(n):
     s.append(list(map(int, input().split())))
