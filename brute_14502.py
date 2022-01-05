@@ -52,12 +52,12 @@ def bfs():
         a, b = arr[0][0], arr[0][1]
         del arr[0]
         for i in range(4):
-            ax = a + dxs[i]
-            ay = b + dys[i]
-            if 0 <= ax and 0 <= ay and ax < n and ay < m:
-                if copy[ax][ay] == 0:
-                    copy[ax][ay] = 2
-                    arr.append([ax, ay])
+            nx = a + dxs[i]
+            ny = b + dys[i]
+            if 0 <= nx and 0 <= ny and nx < n and ny < m:
+                if copy[nx][ny] == 0:
+                    copy[nx][ny] = 2
+                    arr.append([nx, ny])
     for i in copy:
         for j in i:
             if j == 0:
