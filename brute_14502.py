@@ -56,7 +56,7 @@ def bfs():
             ny = b + dys[i]
             if 0 <= nx and 0 <= ny and nx < n and ny < m:
                 if copy[nx][ny] == 0:
-                    copy[nx][ny] = 2
+                    copy[nx][ny] = 2 # 벽이 빈 공간이면 바이러스 2로 만들고 배열에 추가
                     arr.append([nx, ny])
     for i in copy:
         for j in i:
