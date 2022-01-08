@@ -48,16 +48,16 @@ def bfs():
         for j in range(m):
             if copy[i][j] == 2:
                 arr.append([i, j]) # 만약 맵 복사본에서 바이러스가 나오면 그 위치[i,j] arr에 저장
-    while arr: # 배열의 수만큼 돌리나?????????
-        a, b = arr[0][0], arr[0][1]
-        del arr[0]
+    while arr: # 바이러스 개수를 담은 배열의 수만큼 돌리나?????????
+        a, b = arr[0][0], arr[0][1] # a는 바이러스 x축, b는 y축
+        del arr[0] # 하나 검사 마쳤으니까 del 
         for i in range(4):
             nx = a + dxs[i]
             ny = b + dys[i]
             if 0 <= nx and 0 <= ny and nx < n and ny < m:
                 if copy[nx][ny] == 0:
                     copy[nx][ny] = 2 # 벽이 빈 공간이면 바이러스 2로 만들고 배열에 추가
-                    arr.append([nx, ny])
+                    arr.append([nx, ny]) # 바이러스 위치는 arr에 추가
     for i in copy:
         for j in i:
             if j == 0:
