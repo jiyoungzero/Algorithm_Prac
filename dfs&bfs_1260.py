@@ -1,4 +1,4 @@
-arr = list(map(int, input().split()))
+n, m, v = tuple(map(int, input().split()))
 
-dfs = []
-bfs = []
+for _ in range(m):
+    dfs
