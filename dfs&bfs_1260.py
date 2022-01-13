@@ -21,3 +21,4 @@ def bfs(n):
                 queue.append(i)
                 visitied[i] = True #너비탐색은 큐에 저장 후 반복하며 탐색
 
+ss
