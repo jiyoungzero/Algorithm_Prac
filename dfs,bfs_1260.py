@@ -17,8 +17,8 @@ def dfs(n):
 # breadth first search
 def bfs(n):
     #큐 구현을 이해 deque 라이브러리 이용
+    visited[n] = True 
     queue = deque([n])
-    visited[n] = True    
 
     # 큐가 빌 때까지 반복
     while queue:
@@ -29,9 +29,9 @@ def bfs(n):
         for i in graph[v]:
             if not visited[i]:
                 queue.append(i)
-                visitied[i] = True 
+                visited[i] = True 
 
-graph = [[] * (n+1)]
+graph = [[] * (n+1) for _ in range(n+1)]
 visited = [False] * (n+1)
 
 for _ in range(m):
@@ -47,7 +47,3 @@ dfs(v)
 visited = [False] * (n+1)
 print()
 bfs(v)
-
-
-
-
