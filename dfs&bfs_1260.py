@@ -34,4 +34,20 @@ def bfs(n):
 graph = [[] * (n+1)]
 visited = [False] * (n+1)
 
+for _ in range(m):
+    a, b = map(int, input().split())
+    # 인접한 것 연결
+    graph[a].append(b)
+    graph[b].append(a)
+# 인접한 것들을 sort
+for i in range(1, n+1):
+    graph[i].sort()
+
+dfs(v)
+visited = [False] * (n+1)
+print()
+bfs(v)
+
+
+
 
