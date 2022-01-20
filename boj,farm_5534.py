@@ -1,23 +1,21 @@
-n = int(input())
-string = input()
-arr =[input() for _ in range(n)]
-cnt, ans, dist = 0,0,0
+N = int(input())
+board = input()
+arr =[input() for _ in range(N)]
+ans = 0
 flag = False
+allsame = 0
 
-for ele in arr:
-	m_dist = len(ele)//len(string)
-	for i in range(len(ele)-len(string)+1):# 시작지점 범위
-		if flag==True:break
-		for j in range(1,m_dist+1):
-			if flag==True:
-				cnt = 0
-				break
-			for k in range(len(string)): # 표지글자 비교
-				if string[k] == arr[i+j*k]:
-					cnt+=1
-			if cnt == len(string):
+for i in range(N): # 기존표지 수만큼
+	for j in range(len(arr[i])): # 표지 하나당 검사할 수
+		for d in range(1,len(arr[i])): # 간격
+			if len(arr[i]) <= j+d*(len(board)-1): 
+				continue
+			for k in range(len(board)):
+				if board[k] == arr[j+k*d]:
+					allsame+=1
+			if allsame == len(board):
 				flag = True
 	if flag == True:
-		ans+=1
-				
+		ans += 1			
+
 print(ans)
