@@ -1,37 +1,34 @@
 N = int(input())
-arr = [list(map(int, input().split())) for _ in range(N)] # 건초더미 좌표 리스트
-graph = [[0]*(N+1) for _ in range(N+1) ] # 전체 맵
-visited = [[False]*102 for _ in range(102)]
+graph = [[0]*(N+2) for _ in range(N+2) ] # 전체 맵
+visited = [[False]*(N+2) for _ in range(N+2)]
 cnt = 0
 dxs = [0, 0, 1, -1]
 dys = [1, -1, 0, 0]
 
 for i in range(N):
-	a, b = arr[i][0], arr[i][1]
-	if graph[a][b] == 0: # 건초더미 위치 = 1
-		graph[a][b] = 1
-	else:continue
-		
+	a, b = tuple(map(int, input().split()))
+	graph[a][b] = 1
+
 def dfs(x, y):
 	visited[x][y] = True
 	for i in range(4):
 		nx = x + dxs[i]
 		ny = y + dys[i]
-		if nx < 0 or nx > 101 or ny < 0 or ny > 101:
+		if nx < 0 or nx > (N+1) or ny < 0 or ny > (N+1):
 			continue
+		# 아직 방문안했고 건초더미가 없는 곳이면	
 		elif visited[nx][ny] == False and graph[nx][ny] == 0:
 			dfs(nx, ny)
 			
 dfs(0,0)
-			
 for i in range(N+1):
 	for j in range(N+1):
 		if graph[i][j] == 1:
 			for k in range(4):
-				nx = x + dxs[i]
-				ny = y + dys[i]
-				if graph[nx][ny] == 0 and visited[nx][ny] == True:
+				nx = i + dxs[k]
+				ny = j + dys[k]
+				if graph[nx][ny] == 0 and visited[nx][ny] == True: # 건초더미 주변에 있는 빈곳을 센다(dfs로 방문한 빈곳은 visited로 표현 이걸로 cnt)
 					cnt += 1
 		
-print(cnt)		
+print(cnt)	
 		
