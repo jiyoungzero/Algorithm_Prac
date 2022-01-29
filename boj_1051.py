@@ -4,7 +4,7 @@ n, m = tuple(map(int, input().split()))
 arr = [list(map(int, input())) for _ in range(n)]
 ans = -sys.maxsize
 def in_range(x,y):
-	return x>=0 and x<n and y>=0 and y<m # x,y >= 0 이여야 넓이가 1 인 것도 포함
+	return x>0 and x<n and y>0 and y<m # x,y >= 0 이여야 넓이가 1 인 것도 포함
 
 # 모든 좌표를 돌면서 그 숫자가 왼쪽위의 꼭짓점을 가지는 사각형 중 가장 큰 값을 저장
 for i in range(n):
