@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(1000000)
+sys.setrecursionlimit(1000000) # 재귀 허용 깊이 늘리기
 
 m,n = tuple(map(int, input().split()))
 graph = [list(map(int, input())) for _ in range(m)]

@@ -14,7 +14,7 @@ def dfs(x):
 			arr[x] = i			
 			visited[i] = True
 			dfs(x+1)
-			visited[i] = False
+			visited[i] = False # 백트래킹
 			
 dfs(0)			
 			
