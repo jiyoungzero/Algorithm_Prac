@@ -1,26 +1,24 @@
 n = int(input())
-arr = [input() for _ in range(n)] # 입력한 nqueen 배열
+arr = [input() for _ in range(n)]
 ver = [False]*n # 열
+hor = [False]*n # 행 
 diag1 = [False]*2*n # /
 diag2 = [False]*2*n # \
-ans = 0
-flag = False
+flag = True
 
 def is_nqueen(x):
-	global ans
-	if x == n:
-		flag = True
-		return flag
-	else:
-		for i in range(n):
-			# 입력한 nqueen 배정을 보고 열, 대각선 검사
-			if arr[x][i] == 'Q':
-				ver[i] = diag1[x+i] = diag2[x-i+n] = True
-			# 열, 대각선에 어떤 것도 위치하지 않았을 때, 
-			if (not ver[i]) and (not diag1[x+i]) and (not diag2[x-i+n]): is_nqueen(x+1)
-				
-is_nqueen(0)
+	global flag,ver, hor, diag1, diag2
+	for i in range(n):
+		if not flag:break
+		for j in range(n):
+			if arr[i][j] == 'Q':
+				if ver[j] or hor[i] or diag1[i+j] or diag2[i-j+n] :
+					flag = False
+					break
+				ver[j] = hor[i] = diag1[i+j] = diag2[i-j+n] = True
+
+is_nqueen(n)
 if flag:print("YES")
-else: print("NO")
+else:print("NO")
 				
 
