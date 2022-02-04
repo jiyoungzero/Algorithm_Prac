@@ -1,5 +1,6 @@
 n = int(input())
 arr = [input() for _ in range(n)]
+# 모든 행, 열, 대각선을 위한 배열을 생성하는 것이 중요
 ver = [False]*n # 열
 hor = [False]*n # 행 
 diag1 = [False]*2*n # /
