@@ -1,14 +1,13 @@
 n, m = tuple(map(int, input().split()))
 arr = []
-f_arr = []
-b_arr = []
+s_arr = []
+t_arr = []
 visited = [False]*(n+1)
 t_cnt, s_cnt = 0,0
 
 for _ in range(m):
 	a, b = tuple(map(int, input().split()))
-	f_arr[a].append(b)
-	b_arr[b].append(a)
+	s_arr[]
 	
 def taller_dfs(x):
 	global t_cnt
@@ -29,3 +28,15 @@ def shorter_dfs(x):
 			s_cnt += 1
 			shorter_dfs(i)
 	return s_cnt
+
+
+
+
+
+
+
+
+
+
+		
+	
