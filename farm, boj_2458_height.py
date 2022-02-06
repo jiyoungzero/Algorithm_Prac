@@ -1,33 +1,47 @@
-n, m = tuple(map(int, input().split()))
-arr = []
-s_arr = []
-t_arr = []
-visited = [False]*(n+1)
-t_cnt, s_cnt = 0,0
+import sys
+input=sys.stdin.readline
+sys.setrecursionlimit(10**9)
+
+n,m=map(int,input().split())
+
+taller=[set() for _ in range(n)]
+shorter=[set() for _ in range(n)]
+
+e=[[] for _ in range(n)] #자기보다 큰 노드들이 적혀있는 인접리스트
+e_inv=[[] for _ in range(n)] #자기보다 작은 노드들이 적혀있는 인접리스트
 
 for _ in range(m):
-	a, b = tuple(map(int, input().split()))
-	s_arr[]
-	
-def taller_dfs(x):
-	global t_cnt
-	if visited[x] == False:
-		visited[x] = True
-	for i in range(len(f_arr)):
-		if visited[i] == False:
-			t_cnt += 1
-			taller_dfs(i)
-	return t_cnt
+  a,b=map(int,input().split()) #입력을 받으면서
+  e[a-1].append(b-1) #큰 관계
+  e_inv[b-1].append(a-1) #작은 관계 각각 입력
+  
+v=[0 for i in range(n)] # 큰 값 세기
+v_inv=[0 for i in range(n)] # 작은 값 세기
 
-def shorter_dfs(x):
-	global s_cnt
-	if visited[x] == False:
-		visited[x] = True
-	for i in range(len(b_arr)):
-		if visited[i] == False:
-			s_cnt += 1
-			shorter_dfs(i)
-	return s_cnt
+def find_taller(i): #DFS로 자기보다 큰 관계 있는 학생수를 센다
+  if v[i]: return taller[i]
+  v[i]=1
+  for j in e[i]: #인접리스트에서
+    taller[i].add(j)
+    taller[i]|=find_taller(j)
+  return taller[i]
+  
+def find_shorter(i):#DFS로 자기보다 작은 관계 있는 학생수를 센다
+  if v_inv[i]: return shorter[i]
+  v_inv[i]=1
+  
+  for j in e_inv[i]:
+    shorter[i].add(j)
+    shorter[i]|=find_shorter(j)
+    
+  return shorter[i]
+  
+c=0
+for i in range(n):
+  find_taller(i)
+  find_shorter(i)
+  if len(taller[i])+len(shorter[i])==n-1: c+=1
+print(c)
 
 
 
