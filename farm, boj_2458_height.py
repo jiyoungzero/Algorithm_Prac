@@ -1,48 +1,47 @@
 import sys
-input=sys.stdin.readline
-sys.setrecursionlimit(10**9)
-
-n,m=map(int,input().split())
-
-taller=[set() for _ in range(n)]
-shorter=[set() for _ in range(n)]
-
-e=[[] for _ in range(n)] #자기보다 큰 노드들이 적혀있는 인접리스트
-e_inv=[[] for _ in range(n)] #자기보다 작은 노드들이 적혀있는 인접리스트
+sys.setrecursionlimit(300000)
+n, m = map(int, sys.stdin.readline().split())
+height_1 = [[] for _ in range(n + 1)]
+height_2 = [[] for _ in range(n + 1)]
+cnt = 0
 
 for _ in range(m):
-  a,b=map(int,input().split()) #입력을 받으면서
-  e[a-1].append(b-1) #큰 관계
-  e_inv[b-1].append(a-1) #작은 관계 각각 입력
-  
-v=[0 for i in range(n)] # 큰 값 세기
-v_inv=[0 for i in range(n)] # 작은 값 세기
+    a, b = map(int, sys.stdin.readline().split())
+    height_1[a].append(b)
+    height_2[b].append(a)
+	
+def dfs1(x):
+    visited[x] = 1
+    global tall
 
-def find_taller(i): #DFS로 자기보다 큰 관계 있는 학생수를 센다
-  if v[i]: return taller[i]
-  v[i]=1
-  for j in e[i]: #인접리스트에서
-    taller[i].add(j)
-    taller[i]|=find_taller(j)
-  return taller[i]
-  
-def find_shorter(i):#DFS로 자기보다 작은 관계 있는 학생수를 센다
-  if v_inv[i]: return shorter[i]
-  v_inv[i]=1
-  
-  for j in e_inv[i]:
-    shorter[i].add(j)
-    shorter[i]|=find_shorter(j)
-    
-  return shorter[i]
-  
-c=0
-for i in range(n):
-  find_taller(i)
-  find_shorter(i)
-  if len(taller[i])+len(shorter[i])==n-1: c+=1
-print(c)
+    for i in height_1[x]:
+        if not visited[i]:
+            tall += 1
+            dfs1(i)
+    return tall
 
+
+def dfs2(x):
+    visited[x] = 1
+    global short
+
+    for i in height_2[x]:
+        if not visited[i]:
+            short += 1
+            dfs2(i)
+    return short
+
+for i in range(1, n + 1):
+    visited = [0] * (n + 1)
+    tall = short = 0
+    temp1 = dfs1(i)
+
+    visited = [0] * (n + 1)
+    temp2 = dfs2(i)
+    if temp1 + temp2 == n - 1:
+        cnt += 1
+
+print(cnt)
 
 
 
