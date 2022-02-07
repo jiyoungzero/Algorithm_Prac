@@ -13,19 +13,19 @@ for i in range(n):
             queue.append([i, j]) 
 
 def bfs():
-    while queue:
-        x, y = queue.popleft()
+    while queue: # 큐에 들어있는 토마토(1) 수만큼 돌림
+        x, y = queue.popleft() # popleft 한 좌표 [x,y]
         for i in range(4):
             nx, ny = dx[i] + x, dy[i] + y
-            if 0 <= nx < n and 0 <= ny < m and matrix[nx][ny] == 0:
-                matrix[nx][ny] = matrix[x][y] + 1
+            if 0 <= nx < n and 0 <= ny < m and matrix[nx][ny] == 0: # 상하좌우를 돌면서 in_range의 여부, matrix가 빈칸인지 알아봄
+                matrix[nx][ny] = matrix[x][y] + 1 # 빈칸이라면 +1해서 표시하고 nx, ny 좌표는 append
                 queue.append([nx, ny])
 
 bfs()
 for i in matrix:
     for j in i:
-        if j == 0:
+        if j == 0: # 만약에 matrix의 성분이 빈칸이 나온다면(익지못하는 상황)
             print(-1)
             exit(0)
-    ans = max(ans, max(i))
+    ans = max(ans, i)
 print(ans - 1)
