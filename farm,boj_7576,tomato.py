@@ -1,6 +1,6 @@
 from collections import deque
 
-m, n = map(int, input().split())
+n,m = map(int, input().split()) # n은 세로, m은 가로
 matrix = [list(map(int, input().split())) for _ in range(n)] # 토마토 상태 입력받은 배열
 queue = deque([]) # 좌표자체를 요소로 받으니까 deque([])
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
