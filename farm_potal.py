@@ -26,4 +26,4 @@ while que:
 	if k*2<=200000 and visited[k*2] == 0:
 		visited[k*2] = visited[k]+1
 		que.append(k*2)
-print(visited[y]-1)
+print(visited[y]-1) # 사용횟수, 1->3 으로 이동은 횟수가 2이므로 -1
