@@ -22,10 +22,11 @@ def bfs():
                 queue.append([nx, ny])
 
 bfs()
+print(matrix)
 for i in matrix:
     for j in i:
         if j == 0: # 만약에 matrix의 성분이 빈칸이 나온다면(익지못하는 상황)
             print(-1)
             exit(0)
-    ans = max(ans, i)
+    ans = max(ans, max(i))
 print(ans - 1)
