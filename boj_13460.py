@@ -20,6 +20,5 @@ def dfs():
             if arr[i][j] == 'R':
                 for k in range(4):
                     nx, ny = i+dxs[k], j+dys[k]
-                    if in_range(nx,ny) and  # 벽을 만나기 전까지 쭉 이동하는 거 해결해야 함
-
-
+                    while arr[nx][ny] == '#':
+                        if in_range(nx,ny): # 벽을 만나기 전까지 쭉 이동하는 거 해결해야 함
