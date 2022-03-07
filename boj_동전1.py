@@ -1,13 +1,12 @@
 import sys
 n, k = map(int, input().split())
-
+# 동적계획법 사용
 coins = [int(sys.stdin.readline()) for _ in range(n)]
-ans = 0
-coins.sort(reverse=True)
-
-# 큰 수 부터 나누고 더이상 나눠지지 않으면 그 다음으로 큰 수
+dp = [0 for _ in range(k+1)]
+coins.sort()
+#  10 --> 1, 2, 5
+# 모든 코인을 사용
 for coin in coins:
-    if k == 0:break
-    ans += (k//coin)
-    k %= coin
-print(ans)
+
+
+print(cnt)
