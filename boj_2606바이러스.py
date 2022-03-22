@@ -8,5 +8,3 @@ for _ in range(pair):
     a, b = map(int, input().split())
     graph[a].append(b)
     graph[b].append(a)
-
-print(graph)
