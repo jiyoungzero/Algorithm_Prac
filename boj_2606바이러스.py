@@ -5,7 +5,7 @@ n = int(input())
 pair = int(input())
 ans = 0
 graph = [[] for _ in range(n+1)]
-visited = [False] * n
+visited = [False] * (n+1)
 
 for _ in range(pair):
     a, b = map(int, input().split())
