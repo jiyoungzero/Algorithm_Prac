@@ -17,10 +17,13 @@ def bfs(x):
     global ans
     queue = deque()
     queue.append(x)
+    visited[x] = True
     while queue:
         x = queue.popleft()
-        queue.append(x)
-        ans += 1
+        for i in graph[x]:
+            if visited[i] == False:
+                queue.append(i)
+                visited[i] = True
     return ans
 
 
