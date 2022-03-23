@@ -24,6 +24,7 @@ def bfs(x):
             if visited[i] == False:
                 queue.append(i)
                 visited[i] = True
+                ans += 1
     return ans
 
 
