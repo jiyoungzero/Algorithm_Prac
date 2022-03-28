@@ -10,21 +10,29 @@ count = []
 
 def bfs(x, y):
     global count
-    queue = deque([])
-    queue.append([x, y])
+    queue = deque()
+    queue.append((x, y))
     visited[x][y] = True
+    cnt = 1
     while queue:
-        cnt = 0
         x, y = queue.popleft()
         for i in range(4):
             nx, ny = x+dxs[i], y+dys[i]
-            if nx >= 0 and nx < n and ny >= 0 and ny < n and graph[nx][ny] == True:
-                queue.append([nx, ny])
+            if nx < 0 or ny < 0 or nx >= n or ny >= n:
+                continue
+
+            if graph[nx][ny] == 1 and visited[nx][ny] == False:
+                queue.append((nx, ny))
                 visited[nx][ny] = True
                 cnt += 1
-    count.append[cnt]
-    return count
+    return cnt
 
 
-bfs(0, 0)
+for i in range(n):
+    for j in range(n):
+        if not visited[i][j] and graph[i][j] == 1:
+            count.append(bfs(i, j))
+count.sort()
 print(len(count))
+for c in count:
+    print(c)
