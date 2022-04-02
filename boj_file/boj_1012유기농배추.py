@@ -21,10 +21,10 @@ def bfs(x, y):
     while queue:
         x, y = queue.popleft()
         for i in range(4):
-            nx, ny = x+dxs[i], y+dys[i]
-            if nx < 0 or ny < 0 or nx > h or ny > w:
+            nx, ny = x+dxs[i], y+dys[I]
+            if nx < 0 or ny < 0 or nx >= h or ny >= w:
                 continue
-            if graph[nx][ny] == 1 and visited[nx][ny] = False:
+            if graph[nx][ny] == 1 and visited[nx][ny] == False:
                 queue.append((nx, ny))
                 visited[nx][ny] = True
                 cnt += 1
