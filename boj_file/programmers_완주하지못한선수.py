@@ -1,12 +1,13 @@
 def solution(participant, completion):
-    answer = ''
+    hashDict = {
+    }
+    sumHash = 0
+
     for par in participant:
-        for com in completion:
-            if par == com:
-                participant.remove(par)
-                completion.remove(par)
-                if par in participant:
-                    answer = par
-                    return answer
-    answer = participant[0]
-    return answer
+        hashDict[hash(par)] = par
+        sumHash += hash(par)
+
+    for com in completion:
+        sumHash -= hash(com)
+
+    return hashDict[sumHash]
